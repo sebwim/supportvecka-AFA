@@ -87,12 +87,14 @@ p {
 	}
 	
 	//Nästa vecka
+	/*
 	if (team1.includes(nextWeek)){
 		nextTeamText = team[0] + " kommer ta hand om produktens support.";
 	}
 	else if (team2.includes(nextWeek)){
 		nextTeamText = team[1] + " kommer ta hand om produktens support.";
 	}
+	*/
 		
 	if (ersättningsreglering.includes(nextWeek)) {
 		nextText = "Vecka " + nextWeek + ": " + produkter[0];
@@ -118,10 +120,10 @@ p {
 		nextText = "Ingen aning. Kolla supportschema."
 	}
 	
-	document.getElementById("team").innerHTML = teamText;
+	// document.getElementById("team").innerHTML = teamText;
 	document.getElementById("support").innerHTML = produktText;
 	document.getElementById("next").innerHTML = nextText;
-	document.getElementById("nextTeam").innerHTML = nextTeamText;
+	// document.getElementById("nextTeam").innerHTML = nextTeamText;
 		
 	</script>
 
