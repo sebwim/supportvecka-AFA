@@ -26,41 +26,25 @@ p {
   <p id=next></p>
   <!-- <p id=nextTeam></p> -->
   
-  <script>
+   <script>
 	Date.prototype.getWeek = function() {
 		var onejan = new Date(this.getFullYear(), 0, 1);
-		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() - 8) / 7);
 	}
 
 	var weekNumber = (new Date()).getWeek();
-	var now = new Date();
 	var nextWeek = weekNumber + 1;
 		
-	var produkter = ["Ersättningsreglering", "Gemensam försäkringsinformation", "Kundresa och värdeström", "Kvalifikation", "Sommarschema"];
-	var team = ["Team 1", "Team 2"];
-	var ersättningsreglering = [3, 5, 9, 13, 17, 21, 25, 34, 38, 42, 46, 50];
-	var gemensam = [6, 10, 14, 18, 22, 26, 35, 39, 43, 47, 51];
-	var kundresa = [7, 11, 15, 19, 23, 27, 36, 40, 44, 48, 52];
-	var kvalifikation = [2, 4, 8, 12, 16, 20, 24, 33, 37, 41, 45, 49];
+	var produkter = ["Ersättningsreglering", "Gemensam försäkringsinformation", "Kundresa och värdeström", "Kvalifikation", "Sommarschema", "Julschema"];
+	var ersättningsreglering = [3, 7, 11, 15, 19, 23, 27, 36, 40, 44, 48];
+	var gemensam = [4, 8, 12, 16, 20, 24, 33, 37, 41, 45, 49];
+	var kundresa = [5, 9, 13, 17, 21, 25, 34, 38, 42, 46, 50];
+	var kvalifikation = [2, 6, 10, 14, 18, 22, 26, 35, 39, 43, 47, 51];
 	var sommarschema = [28, 29, 30, 31, 32];
-	var team1 = [5, 7, 10, 12, 13, 15, 18, 20, 21, 23, 26, 33, 34, 36, 39, 41, 42, 44, 47, 49, 50, 52];
-	var team2 = [6, 8, 9, 11, 14, 16, 17, 19, 22, 24, 25, 27, 35, 37, 38, 40, 43, 45, 46, 48, 51];
-		
-	var teamText = "";
+	var julschema = [52, 1];
+	
 	var produktText = "";
 	var nextText = "";
-	var nextTeamText = "";
-		
-	/*
-	<!-- if (team1.includes(weekNumber)){
-		teamText = team[0] + " tar hand om produktens support.";
-		document.body.style.backgroundColor = "#add8e6";
-	}
-	else if (team2.includes(weekNumber)){
-		teamText = team[1] + " tar hand om produktens support.";
-		document.body.style.backgroundColor = "#FFA64D";
-	}
-	*/
 		
 	if (ersättningsreglering.includes(weekNumber)) {
 		produktText = "Vecka " + weekNumber + ": " + produkter[0];
@@ -82,20 +66,15 @@ p {
 		produktText = "Vecka " + weekNumber + ": " + produkter[4];
 	}
 	
-	else {
-		produktText = "Ingen aning. Kolla supportschema."
+	else if (julschema.includes(weekNumber)) {
+		produktText = "Vecka " + weekNumber + ": " + produkter[5];
 	}
 	
-	//Nästa vecka
-	/*
-	if (team1.includes(nextWeek)){
-		nextTeamText = team[0] + " kommer ta hand om produktens support.";
+	else {
+		produktText = "Jag vet inte :(. Kolla supportschema."
 	}
-	else if (team2.includes(nextWeek)){
-		nextTeamText = team[1] + " kommer ta hand om produktens support.";
-	}
-	*/
-		
+	
+	//Nästa vecka	
 	if (ersättningsreglering.includes(nextWeek)) {
 		nextText = "Vecka " + nextWeek + ": " + produkter[0];
 	}
@@ -116,14 +95,16 @@ p {
 		nextText = "Vecka " + nextWeek + ": " + produkter[4];
 	}
 	
-	else {
-		nextText = "Ingen aning. Kolla supportschema."
+	else if (julschema.includes(nextWeek)) {
+		nextText = "Vecka " + nextWeek + ": " + produkter[5];
 	}
 	
-	// document.getElementById("team").innerHTML = teamText;
+	else {
+		nextText = "Jag vet inte :(. Kolla supportschema."
+	}
+	
 	document.getElementById("support").innerHTML = produktText;
 	document.getElementById("next").innerHTML = nextText;
-	// document.getElementById("nextTeam").innerHTML = nextTeamText;
 		
 	</script>
 
